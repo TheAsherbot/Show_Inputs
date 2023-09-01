@@ -78,14 +78,12 @@ namespace TheAshBot.UI
         private void SetLightenOnPress(bool lightenWhenPressed)
         {
             inputManager.SetLightWhenPressed(lightenWhenPressed);
-
             Save();
         }
         
         private void SetControllerTypeDropdown(int controllerTypeIndex)
         {
             inputManager.SetInputType((InputManager.InputType)controllerTypeIndex);
-
             Save();
         }
 
@@ -96,7 +94,6 @@ namespace TheAshBot.UI
 
         private void Resume()
         {
-            Time.timeScale = 1.0f;
             isOpen = false;
             window.SetActive(isOpen);
         }
@@ -104,7 +101,6 @@ namespace TheAshBot.UI
         private void Options()
         {
             isOpen = !isOpen;
-            Time.timeScale = isOpen ? 0 : 1;
             window.SetActive(isOpen);
         }
 
@@ -117,6 +113,7 @@ namespace TheAshBot.UI
         {
             controllerTypeDropdown.ClearOptions();
             controllerTypeDropdown.AddOptions(new List<string> { InputManager.InputType.XBox360.ToString(), InputManager.InputType.XBox1.ToString() });
+            resolutionDropdown.RefreshShownValue();
 
 
             SaveOptionsData optionsData = SaveSystem.LoadJson<SaveOptionsData>(SaveSystem.RootPath.Resources, OPTIONS_DATA_PATH, OPTIONS_DATA_NAME);
