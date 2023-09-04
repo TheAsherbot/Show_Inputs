@@ -72,6 +72,8 @@ public class _BaseControllerInputManager : MonoBehaviour
 
     private const float MIN_STICK_DEAD_ZONE = 0.1f;
 
+
+
     #region UV Start Index
 
     private const int BODY_UV_START_INDEX = 0;
@@ -90,10 +92,17 @@ public class _BaseControllerInputManager : MonoBehaviour
     private const int DPAD_WEST_UV_START_INDEX = 52;
     private const int LEFT_STICK_UV_START_INDEX = 56;
     private const int RIGHT_STICK_UV_START_INDEX = 60;
+    private const int HOME_UV_START_INDEX = 64;
+    private const int SELECT_UV_START_INDEX = 68;
+    private const int START_UV_START_INDEX = 72;
 
     #endregion
 
     #region UV Positions
+
+    private static readonly int4 HOME_UV_POSITION = new int4(0, 640, 64, 704);
+    private static readonly int4 SELECT_UV_POSITION = new int4(64, 640, 128, 704);
+    private static readonly int4 START_UV_POSITION = new int4(128, 640, 192, 704);
 
     private static readonly int4 BODY_UV_POSITION = new int4(0, 512, 64, 576);
 
@@ -141,19 +150,23 @@ public class _BaseControllerInputManager : MonoBehaviour
     public OnInput<Vector2> onLeftStick;
     public OnInput<Vector2> onRightStick;
 
+    public OnInput onHome;
+    public OnInput onSelect;
+    public OnInput onStart;
+
     #endregion
 
     protected int[] triangles;
     protected Vector2[] uvs;
     protected Vector3[] vertices;
-    protected int numberOfMeshes = 16;
+    protected int numberOfMeshes = 19;
     protected bool updateMesh = false;
 
     private Mesh mesh;
     private MeshFilter meshFilter;
 
     
-    protected Sprite sprite = new Sprite(320, 576);
+    protected Sprite sprite = new Sprite(320, 704);
 
 
     [SerializeField] protected InputManager inputManager;
@@ -181,10 +194,9 @@ public class _BaseControllerInputManager : MonoBehaviour
         onLeftStick += OnLeftStick;
         onRightStick += OnRightStick;
 
-        #endregion
-
-        #region Mesh
-
+        onHome += OnHome;
+        onSelect += OnSelect;
+        onStart += OnStart;
 
         #endregion
     }
@@ -263,6 +275,12 @@ public class _BaseControllerInputManager : MonoBehaviour
         AssineUV(LEFT_STICK_UV_START_INDEX, LEFT_STICK_UV_POSITION_DARK + offset);
 
         AssineUV(RIGHT_STICK_UV_START_INDEX, RIGHT_STICK_UV_POSITION_DARK + offset);
+
+        AssineUV(HOME_UV_START_INDEX, HOME_UV_POSITION + offset);
+
+        AssineUV(SELECT_UV_START_INDEX, SELECT_UV_POSITION + offset);
+
+        AssineUV(START_UV_START_INDEX, START_UV_POSITION + offset);
 
         void AssineUV(int startIndex, int4 uvPosition)
         {
@@ -553,7 +571,7 @@ public class _BaseControllerInputManager : MonoBehaviour
                 ResetUV(DPAD_WEST_UV_START_INDEX);
             }
 
-            if (input.y < MIN_STICK_DEAD_ZONE)
+            if (input.y < -MIN_STICK_DEAD_ZONE)
             {
                 ResetUV(DPAD_NORTH_UV_START_INDEX);
                 SetUV(DPAD_SOUTH_UV_START_INDEX, DPAD_SOUTH_UV_POSITION_DARK);
@@ -679,6 +697,80 @@ public class _BaseControllerInputManager : MonoBehaviour
             vertices[RIGHT_STICK_UV_START_INDEX + 3] = new Vector2(32, -32) + centerPosition;
         }
     }
+
+    private void OnHome(ActionType actionType)
+    {
+        if ((lightWhenPressed && actionType == ActionType.Started) || (!lightWhenPressed && actionType == ActionType.Canceled))
+        {
+            Vector2[] tempUV = sprite.GetUV(HOME_UV_POSITION + LIGHT_UV_OFFSET);
+            uvs[HOME_UV_START_INDEX] = tempUV[0];
+            uvs[HOME_UV_START_INDEX + 1] = tempUV[1];
+            uvs[HOME_UV_START_INDEX + 2] = tempUV[2];
+            uvs[HOME_UV_START_INDEX + 3] = tempUV[3];
+        }
+        else if ((lightWhenPressed && actionType == ActionType.Canceled) || (!lightWhenPressed && actionType == ActionType.Started))
+        {
+            Vector2[] tempUV = sprite.GetUV(HOME_UV_POSITION);
+            uvs[HOME_UV_START_INDEX] = tempUV[0];
+            uvs[HOME_UV_START_INDEX + 1] = tempUV[1];
+            uvs[HOME_UV_START_INDEX + 2] = tempUV[2];
+            uvs[HOME_UV_START_INDEX + 3] = tempUV[3];
+        }
+
+        if (actionType == ActionType.Started || actionType == ActionType.Canceled)
+        {
+            updateMesh = true;
+        }
+    }
+    private void OnSelect(ActionType actionType)
+    {
+        if ((lightWhenPressed && actionType == ActionType.Started) || (!lightWhenPressed && actionType == ActionType.Canceled))
+        {
+            Vector2[] tempUV = sprite.GetUV(SELECT_UV_POSITION + LIGHT_UV_OFFSET);
+            uvs[SELECT_UV_START_INDEX] = tempUV[0];
+            uvs[SELECT_UV_START_INDEX + 1] = tempUV[1];
+            uvs[SELECT_UV_START_INDEX + 2] = tempUV[2];
+            uvs[SELECT_UV_START_INDEX + 3] = tempUV[3];
+        }
+        else if ((lightWhenPressed && actionType == ActionType.Canceled) || (!lightWhenPressed && actionType == ActionType.Started))
+        {
+            Vector2[] tempUV = sprite.GetUV(SELECT_UV_POSITION);
+            uvs[SELECT_UV_START_INDEX] = tempUV[0];
+            uvs[SELECT_UV_START_INDEX + 1] = tempUV[1];
+            uvs[SELECT_UV_START_INDEX + 2] = tempUV[2];
+            uvs[SELECT_UV_START_INDEX + 3] = tempUV[3];
+        }
+
+        if (actionType == ActionType.Started || actionType == ActionType.Canceled)
+        {
+            updateMesh = true;
+        }
+    }
+    private void OnStart(ActionType actionType)
+    {
+        if ((lightWhenPressed && actionType == ActionType.Started) || (!lightWhenPressed && actionType == ActionType.Canceled))
+        {
+            Vector2[] tempUV = sprite.GetUV(START_UV_POSITION + LIGHT_UV_OFFSET);
+            uvs[START_UV_START_INDEX] = tempUV[0];
+            uvs[START_UV_START_INDEX + 1] = tempUV[1];
+            uvs[START_UV_START_INDEX + 2] = tempUV[2];
+            uvs[START_UV_START_INDEX + 3] = tempUV[3];
+        }
+        else if ((lightWhenPressed && actionType == ActionType.Canceled) || (!lightWhenPressed && actionType == ActionType.Started))
+        {
+            Vector2[] tempUV = sprite.GetUV(START_UV_POSITION);
+            uvs[START_UV_START_INDEX] = tempUV[0];
+            uvs[START_UV_START_INDEX + 1] = tempUV[1];
+            uvs[START_UV_START_INDEX + 2] = tempUV[2];
+            uvs[START_UV_START_INDEX + 3] = tempUV[3];
+        }
+
+        if (actionType == ActionType.Started || actionType == ActionType.Canceled)
+        {
+            updateMesh = true;
+        }
+    }
+
 
     private void InputManager_OnLightWhenPressedChange(bool lightWhenPressed)
     {

@@ -83,7 +83,7 @@ namespace TheAshBot.UI
         
         private void SetControllerTypeDropdown(int controllerTypeIndex)
         {
-            inputManager.SetInputType((InputManager.InputType)controllerTypeIndex);
+            inputManager.SetVisualType((InputManager.VisualType)controllerTypeIndex);
             Save();
         }
 
@@ -112,7 +112,7 @@ namespace TheAshBot.UI
         public bool TryLoadOptions()
         {
             controllerTypeDropdown.ClearOptions();
-            controllerTypeDropdown.AddOptions(new List<string> { InputManager.InputType.XBox360.ToString(), InputManager.InputType.XBox1.ToString() });
+            controllerTypeDropdown.AddOptions(new List<string> { InputManager.VisualType.XBox360.ToString(), InputManager.VisualType.XBox1.ToString() });
             resolutionDropdown.RefreshShownValue();
 
 

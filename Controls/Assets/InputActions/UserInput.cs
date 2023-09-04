@@ -127,7 +127,7 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""XBox360_Back"",
+                    ""name"": ""Select"",
                     ""type"": ""Button"",
                     ""id"": ""f1e1abb3-a583-4964-993e-31744f11c6c0"",
                     ""expectedControlType"": ""Button"",
@@ -136,7 +136,7 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""XBox360_Start"",
+                    ""name"": ""Start"",
                     ""type"": ""Button"",
                     ""id"": ""aaf5dae1-22b1-45b8-951f-5ccb73deb105"",
                     ""expectedControlType"": ""Button"",
@@ -145,7 +145,7 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""XBox360 Home"",
+                    ""name"": ""Home"",
                     ""type"": ""Button"",
                     ""id"": ""714cf66c-7adb-411d-b9f0-19401ac160ab"",
                     ""expectedControlType"": ""Button"",
@@ -157,232 +157,12 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""2fceb492-8263-411c-8c4c-d5ea135e0f59"",
-                    ""path"": ""<XInputController>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox;Controller"",
-                    ""action"": ""ButtonNorth"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4134bd4b-b1dd-4598-9a45-8cb878ca5fd0"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""ButtonNorth"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6dcb3f1a-ef2b-46d8-a5c5-f0ca9fd53576"",
-                    ""path"": ""<XInputController>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""ButtonSouth"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e513fbbf-0a2b-41c9-bc7d-390203898bfc"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""ButtonSouth"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5b06d4cc-cadb-43d5-b869-3badd637009b"",
-                    ""path"": ""<XInputController>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""ButtonEast"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7836813a-4346-4659-a22b-8e3870c8f99d"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""ButtonEast"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d91cd8f9-0b7a-4edc-b1ad-dd60b798f43e"",
-                    ""path"": ""<XInputController>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""ButtonWest"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c6abbfd6-2a99-4b8b-a561-e18f346ab0d5"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""ButtonWest"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""43d1852f-ca72-43a7-b1a7-74e3d726fba4"",
-                    ""path"": ""<XInputController>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""LeftStick"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3dbe153d-7c6d-49a9-9e59-ccc988e67e84"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""LeftStick"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6d1a77e9-c22e-41e7-a893-8533ec736e4e"",
-                    ""path"": ""<XInputController>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""RightStick"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""864349d9-3640-429b-863b-5fb3ecb6ffe4"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""RightStick"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""533bf2bd-99fa-4021-8e9f-9b6cecad5a9f"",
-                    ""path"": ""<XInputController>/dpad"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""DPad"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""39640f95-bc7a-49b9-9e1b-5dca823ffb8c"",
-                    ""path"": ""<Gamepad>/dpad"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""DPad"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c2baad3b-751a-4aa7-b4df-67891128dad3"",
-                    ""path"": ""<XInputController>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""ZL"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1e3adbb5-889c-49d4-8eba-f06c81b17109"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""ZL"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c8d86606-29f5-4a0c-b012-1d4f0543fea2"",
-                    ""path"": ""<XInputController>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""L"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f45462eb-a0af-4899-9c25-07e16c63a3f8"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""L"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""98243742-06fb-4d49-933d-ea6615c3ab53"",
-                    ""path"": ""<XInputController>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""R"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""f502584f-bb47-4e96-b069-cecd8673ab27"",
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""XBox"",
+                    ""groups"": ""Controller"",
                     ""action"": ""R"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""81b0c4bc-3ea9-4c1d-937f-81e58bd12ba7"",
-                    ""path"": ""<XInputController>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""ZR"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -392,41 +172,140 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""XBox"",
+                    ""groups"": ""Controller"",
                     ""action"": ""ZR"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""7f5d2fc6-f7e7-4f4e-8ec1-520f8534b12c"",
-                    ""path"": ""<XInputController>/select"",
+                    ""id"": ""1e1e97b9-0846-4c9b-afdd-ed3a2b40f6c6"",
+                    ""path"": ""<Gamepad>/select"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""XBox360_Back"",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Select"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""66c61393-a3d0-495a-b3a5-34c4e33825b8"",
-                    ""path"": ""<XInputController>/start"",
+                    ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""XBox360_Start"",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Start"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2bf8acc2-80ba-474e-9e72-39ffdab3df2f"",
-                    ""path"": """",
+                    ""id"": ""6645d61b-28d5-4d45-af97-291b015fa2d5"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""XBox"",
-                    ""action"": ""XBox360 Home"",
+                    ""groups"": ""Controller"",
+                    ""action"": ""L"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0aae9930-ee01-4955-a9a0-513b71545653"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""ZL"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ccdb007-4807-45c9-a460-228da6592d22"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""RightStick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""deceb86d-8f87-4fea-93f2-53c2fa568f21"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""LeftStick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f7843f88-ddc4-4757-8224-2fae6031fd7d"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""ButtonWest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""78d9ae8b-a5ad-4417-90f5-dd9566d7cd19"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""ButtonEast"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4461f662-2ac2-48d0-9176-121457eb0f27"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""ButtonSouth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""63ae0c03-6e63-4a12-84ba-dd910899b538"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""ButtonNorth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7ec0fd7a-7ae7-4093-ab94-7e71dde061db"",
+                    ""path"": ""<SwitchProControllerHID>/home"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Home"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""69b50542-4d97-4a7d-a905-b9421eb040a5"",
+                    ""path"": ""<Gamepad>/dpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DPad"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -494,17 +373,6 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
             ]
         },
         {
-            ""name"": ""XBox"",
-            ""bindingGroup"": ""XBox"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<XInputController>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                }
-            ]
-        },
-        {
             ""name"": ""KeyBorad"",
             ""bindingGroup"": ""KeyBorad"",
             ""devices"": [
@@ -530,9 +398,9 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
         m_StanderdController_L = m_StanderdController.FindAction("L", throwIfNotFound: true);
         m_StanderdController_R = m_StanderdController.FindAction("R", throwIfNotFound: true);
         m_StanderdController_ZR = m_StanderdController.FindAction("ZR", throwIfNotFound: true);
-        m_StanderdController_XBox360_Back = m_StanderdController.FindAction("XBox360_Back", throwIfNotFound: true);
-        m_StanderdController_XBox360_Start = m_StanderdController.FindAction("XBox360_Start", throwIfNotFound: true);
-        m_StanderdController_XBox360Home = m_StanderdController.FindAction("XBox360 Home", throwIfNotFound: true);
+        m_StanderdController_Select = m_StanderdController.FindAction("Select", throwIfNotFound: true);
+        m_StanderdController_Start = m_StanderdController.FindAction("Start", throwIfNotFound: true);
+        m_StanderdController_Home = m_StanderdController.FindAction("Home", throwIfNotFound: true);
         // Options
         m_Options = asset.FindActionMap("Options", throwIfNotFound: true);
         m_Options_Shift = m_Options.FindAction("Shift", throwIfNotFound: true);
@@ -609,9 +477,9 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_StanderdController_L;
     private readonly InputAction m_StanderdController_R;
     private readonly InputAction m_StanderdController_ZR;
-    private readonly InputAction m_StanderdController_XBox360_Back;
-    private readonly InputAction m_StanderdController_XBox360_Start;
-    private readonly InputAction m_StanderdController_XBox360Home;
+    private readonly InputAction m_StanderdController_Select;
+    private readonly InputAction m_StanderdController_Start;
+    private readonly InputAction m_StanderdController_Home;
     public struct StanderdControllerActions
     {
         private @UserInput m_Wrapper;
@@ -627,9 +495,9 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
         public InputAction @L => m_Wrapper.m_StanderdController_L;
         public InputAction @R => m_Wrapper.m_StanderdController_R;
         public InputAction @ZR => m_Wrapper.m_StanderdController_ZR;
-        public InputAction @XBox360_Back => m_Wrapper.m_StanderdController_XBox360_Back;
-        public InputAction @XBox360_Start => m_Wrapper.m_StanderdController_XBox360_Start;
-        public InputAction @XBox360Home => m_Wrapper.m_StanderdController_XBox360Home;
+        public InputAction @Select => m_Wrapper.m_StanderdController_Select;
+        public InputAction @Start => m_Wrapper.m_StanderdController_Start;
+        public InputAction @Home => m_Wrapper.m_StanderdController_Home;
         public InputActionMap Get() { return m_Wrapper.m_StanderdController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -672,15 +540,15 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
             @ZR.started += instance.OnZR;
             @ZR.performed += instance.OnZR;
             @ZR.canceled += instance.OnZR;
-            @XBox360_Back.started += instance.OnXBox360_Back;
-            @XBox360_Back.performed += instance.OnXBox360_Back;
-            @XBox360_Back.canceled += instance.OnXBox360_Back;
-            @XBox360_Start.started += instance.OnXBox360_Start;
-            @XBox360_Start.performed += instance.OnXBox360_Start;
-            @XBox360_Start.canceled += instance.OnXBox360_Start;
-            @XBox360Home.started += instance.OnXBox360Home;
-            @XBox360Home.performed += instance.OnXBox360Home;
-            @XBox360Home.canceled += instance.OnXBox360Home;
+            @Select.started += instance.OnSelect;
+            @Select.performed += instance.OnSelect;
+            @Select.canceled += instance.OnSelect;
+            @Start.started += instance.OnStart;
+            @Start.performed += instance.OnStart;
+            @Start.canceled += instance.OnStart;
+            @Home.started += instance.OnHome;
+            @Home.performed += instance.OnHome;
+            @Home.canceled += instance.OnHome;
         }
 
         private void UnregisterCallbacks(IStanderdControllerActions instance)
@@ -718,15 +586,15 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
             @ZR.started -= instance.OnZR;
             @ZR.performed -= instance.OnZR;
             @ZR.canceled -= instance.OnZR;
-            @XBox360_Back.started -= instance.OnXBox360_Back;
-            @XBox360_Back.performed -= instance.OnXBox360_Back;
-            @XBox360_Back.canceled -= instance.OnXBox360_Back;
-            @XBox360_Start.started -= instance.OnXBox360_Start;
-            @XBox360_Start.performed -= instance.OnXBox360_Start;
-            @XBox360_Start.canceled -= instance.OnXBox360_Start;
-            @XBox360Home.started -= instance.OnXBox360Home;
-            @XBox360Home.performed -= instance.OnXBox360Home;
-            @XBox360Home.canceled -= instance.OnXBox360Home;
+            @Select.started -= instance.OnSelect;
+            @Select.performed -= instance.OnSelect;
+            @Select.canceled -= instance.OnSelect;
+            @Start.started -= instance.OnStart;
+            @Start.performed -= instance.OnStart;
+            @Start.canceled -= instance.OnStart;
+            @Home.started -= instance.OnHome;
+            @Home.performed -= instance.OnHome;
+            @Home.canceled -= instance.OnHome;
         }
 
         public void RemoveCallbacks(IStanderdControllerActions instance)
@@ -807,15 +675,6 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_ControllerSchemeIndex];
         }
     }
-    private int m_XBoxSchemeIndex = -1;
-    public InputControlScheme XBoxScheme
-    {
-        get
-        {
-            if (m_XBoxSchemeIndex == -1) m_XBoxSchemeIndex = asset.FindControlSchemeIndex("XBox");
-            return asset.controlSchemes[m_XBoxSchemeIndex];
-        }
-    }
     private int m_KeyBoradSchemeIndex = -1;
     public InputControlScheme KeyBoradScheme
     {
@@ -838,9 +697,9 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
         void OnL(InputAction.CallbackContext context);
         void OnR(InputAction.CallbackContext context);
         void OnZR(InputAction.CallbackContext context);
-        void OnXBox360_Back(InputAction.CallbackContext context);
-        void OnXBox360_Start(InputAction.CallbackContext context);
-        void OnXBox360Home(InputAction.CallbackContext context);
+        void OnSelect(InputAction.CallbackContext context);
+        void OnStart(InputAction.CallbackContext context);
+        void OnHome(InputAction.CallbackContext context);
     }
     public interface IOptionsActions
     {

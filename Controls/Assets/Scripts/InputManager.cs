@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using TheAshBot;
 
+using Unity.Burst.CompilerServices;
+using Unity.VisualScripting;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,7 +12,7 @@ public class InputManager : MonoBehaviour
 {
 
 
-    public enum InputType
+    public enum VisualType
     {
         NONE = -1,
         XBox360,
@@ -17,7 +20,7 @@ public class InputManager : MonoBehaviour
     }
 
 
-    private static readonly List<InputType> STANDERD_CONTROLLER_TYPES_LIST = new List<InputType> { InputType.XBox360, InputType.XBox1 };
+    private static readonly List<VisualType> STANDERD_CONTROLLER_TYPES_LIST = new List<VisualType> { VisualType.XBox360, VisualType.XBox1 };
 
 
     public event Action<bool> OnLightWhenPressedChange;
@@ -29,10 +32,10 @@ public class InputManager : MonoBehaviour
     public UserInput userInput;
 
 
-    private InputType lastInputType;
-    public InputType inputType = InputType.XBox360;
-    [SerializeField] private XBox360InputManager xBox360InputManager;
-    [SerializeField] private XBox1InputManager xBox1InputManager;
+    public VisualType visualType = VisualType.XBox360;
+    [SerializeField] private _BaseControllerInputManager genericController;
+    [SerializeField] private Material xbox360Matterial;
+    [SerializeField] private Material xbox1Matterial;
 
 
     private _BaseControllerInputManager controllerInputManager;
@@ -55,9 +58,10 @@ public class InputManager : MonoBehaviour
     private Vector2 lastLeftStick;
     private Vector2 lastRightStick;
 
+    private ActionType actionTypeStart;
+    private ActionType actionTypeSelect;
+    private ActionType actionTypeHome;
 
-    private ActionType actionTypeXboxStart;
-    private ActionType actionTypeXboxBack;
 
     public Action OnOptions;
     private bool shift;
@@ -70,11 +74,11 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        lastInputType = InputType.NONE;
         userInput = new UserInput();
 
+        controllerInputManager = genericController;
 
-        if (STANDERD_CONTROLLER_TYPES_LIST.Contains(inputType))
+        if (STANDERD_CONTROLLER_TYPES_LIST.Contains(visualType))
         {
             userInput.StanderdController.Enable();
         }
@@ -100,27 +104,9 @@ public class InputManager : MonoBehaviour
             OnOptions?.Invoke();
         }
 
-        TestInputType();
-
-        if (STANDERD_CONTROLLER_TYPES_LIST.Contains(inputType))
+        if (STANDERD_CONTROLLER_TYPES_LIST.Contains(visualType))
         {
             HandleControllerInput();
-        }
-    }
-
-
-    private void TestInputType()
-    {
-        if (lastInputType != inputType)
-        {
-            lastInputType = inputType;
-
-            switch (inputType)
-            {
-                case InputType.XBox360:
-                    controllerInputManager = xBox360InputManager;
-                    break;
-            }
         }
     }
 
@@ -217,7 +203,7 @@ public class InputManager : MonoBehaviour
         if (rightStick != lastRightStick || rightStick != Vector2.zero)
         {
             ActionType actionType;
-            
+
             if (rightStick == Vector2.zero)
             {
                 // Stoped
@@ -239,30 +225,17 @@ public class InputManager : MonoBehaviour
             lastRightStick = rightStick;
         }
 
-        if (inputType == InputType.XBox360 || inputType == InputType.XBox1)
+        if (actionTypeSelect != ActionType.NONE)
         {
-            if (controllerInputManager is XBox360InputManager xbox360InputManager)
-            {
-                if (actionTypeXboxBack != ActionType.NONE)
-                {
-                    xbox360InputManager.onBack?.Invoke(actionTypeXboxBack);
-                }
-                if (actionTypeXboxStart != ActionType.NONE)
-                {
-                    xbox360InputManager.onStart?.Invoke(actionTypeXboxStart);
-                }
-            }
-            else if (controllerInputManager is XBox1InputManager xbox1InputManager)
-            {
-                if (actionTypeXboxBack != ActionType.NONE)
-                {
-                    xbox1InputManager.onBack?.Invoke(actionTypeXboxBack);
-                }
-                if (actionTypeXboxStart != ActionType.NONE)
-                {
-                    xbox1InputManager.onStart?.Invoke(actionTypeXboxStart);
-                }
-            }
+            controllerInputManager.onSelect?.Invoke(actionTypeSelect);
+        }
+        if (actionTypeStart != ActionType.NONE)
+        {
+            controllerInputManager.onStart?.Invoke(actionTypeStart);
+        }
+        if (actionTypeHome != ActionType.NONE)
+        {
+            controllerInputManager.onHome?.Invoke(actionTypeHome);
         }
 
         AdvanceControllerActionTypes();
@@ -346,22 +319,31 @@ public class InputManager : MonoBehaviour
         }
 
 
-        switch (actionTypeXboxBack)
+        switch (actionTypeSelect)
         {
             case ActionType.Started:
-                actionTypeXboxBack = ActionType.Performed;
+                actionTypeSelect = ActionType.Performed;
                 break;
             case ActionType.Canceled:
-                actionTypeXboxBack = ActionType.NONE;
+                actionTypeSelect = ActionType.NONE;
                 break;
         }
-        switch (actionTypeXboxStart)
+        switch (actionTypeStart)
         {
             case ActionType.Started:
-                actionTypeXboxStart = ActionType.Performed;
+                actionTypeStart = ActionType.Performed;
                 break;
             case ActionType.Canceled:
-                actionTypeXboxStart = ActionType.NONE;
+                actionTypeStart = ActionType.NONE;
+                break;
+        }
+        switch (actionTypeHome)
+        {
+            case ActionType.Started:
+                actionTypeHome = ActionType.Performed;
+                break;
+            case ActionType.Canceled:
+                actionTypeHome = ActionType.NONE;
                 break;
         }
 
@@ -387,10 +369,12 @@ public class InputManager : MonoBehaviour
         userInput.StanderdController.ButtonWest.performed += ButtonWest_performed;
         userInput.StanderdController.ButtonWest.canceled += ButtonWest_canceled;
 
-        userInput.StanderdController.XBox360_Back.performed += XBox360_Back_performed;
-        userInput.StanderdController.XBox360_Back.canceled += XBox360_Back_canceled;
-        userInput.StanderdController.XBox360_Start.performed += XBox360_Start_performed;
-        userInput.StanderdController.XBox360_Start.canceled += XBox360_Start_canceled;
+        userInput.StanderdController.Select.performed += Select_performed;
+        userInput.StanderdController.Select.canceled += Select_canceled;
+        userInput.StanderdController.Start.performed += Start_performed;
+        userInput.StanderdController.Start.canceled += Start_canceled;
+        userInput.StanderdController.Home.performed += Home_performed;
+        userInput.StanderdController.Home.canceled += Home_canceled;
     }
 
     #region Controller Events
@@ -468,24 +452,31 @@ public class InputManager : MonoBehaviour
         actionTypeuttonWest = ActionType.Canceled;
     }
 
-
-
-    private void XBox360_Start_performed(InputAction.CallbackContext obj)
+    private void Start_performed(InputAction.CallbackContext obj)
     {
-        actionTypeXboxStart = ActionType.Started;
+        actionTypeStart = ActionType.Started;
     }
-    private void XBox360_Start_canceled(InputAction.CallbackContext obj)
+    private void Start_canceled(InputAction.CallbackContext obj)
     {
-        actionTypeXboxStart = ActionType.Canceled;
+        actionTypeStart = ActionType.Canceled;
     }
 
-    private void XBox360_Back_performed(InputAction.CallbackContext obj)
+    private void Select_performed(InputAction.CallbackContext obj)
     {
-        actionTypeXboxBack = ActionType.Started;
+        actionTypeSelect = ActionType.Started;
     }
-    private void XBox360_Back_canceled(InputAction.CallbackContext obj)
+    private void Select_canceled(InputAction.CallbackContext obj)
     {
-        actionTypeXboxBack = ActionType.Canceled;
+        actionTypeSelect = ActionType.Canceled;
+    }
+
+    private void Home_performed(InputAction.CallbackContext obj)
+    {
+        actionTypeHome = ActionType.Started;
+    }
+    private void Home_canceled(InputAction.CallbackContext obj)
+    {
+        actionTypeHome = ActionType.Canceled;
     }
 
     #endregion
@@ -499,20 +490,16 @@ public class InputManager : MonoBehaviour
         OnLightWhenPressedChange?.Invoke(lightWhenPressed);
     }
 
-    public void SetInputType(InputType inputType)
+    public void SetVisualType(VisualType inputType)
     {
-        this.inputType = inputType;
+        this.visualType = inputType;
         switch (inputType)
         {
-            case InputType.XBox360:
-                xBox360InputManager.gameObject.SetActive(true);
-                xBox1InputManager.gameObject.SetActive(false);
-                controllerInputManager = xBox360InputManager;
+            case VisualType.XBox360:
+                genericController.GetComponent<MeshRenderer>().material = xbox360Matterial;
                 break;
-            case InputType.XBox1:
-                xBox1InputManager.gameObject.SetActive(true);
-                xBox360InputManager.gameObject.SetActive(false);
-                controllerInputManager = xBox1InputManager;
+            case VisualType.XBox1:
+                genericController.GetComponent<MeshRenderer>().material = xbox1Matterial;
                 break;
         }
     }
