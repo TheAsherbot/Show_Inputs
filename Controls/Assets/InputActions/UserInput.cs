@@ -332,6 +332,15 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeftMouseButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""af1afc8d-2b6d-4129-b578-36ff1cf2b38a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -354,6 +363,17 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""KeyBorad"",
                     ""action"": ""Escape"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a404144-ba4a-400b-83da-bcc0cad7ea1b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyBorad"",
+                    ""action"": ""LeftMouseButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -405,6 +425,7 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
         m_Options = asset.FindActionMap("Options", throwIfNotFound: true);
         m_Options_Shift = m_Options.FindAction("Shift", throwIfNotFound: true);
         m_Options_Escape = m_Options.FindAction("Escape", throwIfNotFound: true);
+        m_Options_LeftMouseButton = m_Options.FindAction("LeftMouseButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -618,12 +639,14 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
     private List<IOptionsActions> m_OptionsActionsCallbackInterfaces = new List<IOptionsActions>();
     private readonly InputAction m_Options_Shift;
     private readonly InputAction m_Options_Escape;
+    private readonly InputAction m_Options_LeftMouseButton;
     public struct OptionsActions
     {
         private @UserInput m_Wrapper;
         public OptionsActions(@UserInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Shift => m_Wrapper.m_Options_Shift;
         public InputAction @Escape => m_Wrapper.m_Options_Escape;
+        public InputAction @LeftMouseButton => m_Wrapper.m_Options_LeftMouseButton;
         public InputActionMap Get() { return m_Wrapper.m_Options; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -639,6 +662,9 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
             @Escape.started += instance.OnEscape;
             @Escape.performed += instance.OnEscape;
             @Escape.canceled += instance.OnEscape;
+            @LeftMouseButton.started += instance.OnLeftMouseButton;
+            @LeftMouseButton.performed += instance.OnLeftMouseButton;
+            @LeftMouseButton.canceled += instance.OnLeftMouseButton;
         }
 
         private void UnregisterCallbacks(IOptionsActions instance)
@@ -649,6 +675,9 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
             @Escape.started -= instance.OnEscape;
             @Escape.performed -= instance.OnEscape;
             @Escape.canceled -= instance.OnEscape;
+            @LeftMouseButton.started -= instance.OnLeftMouseButton;
+            @LeftMouseButton.performed -= instance.OnLeftMouseButton;
+            @LeftMouseButton.canceled -= instance.OnLeftMouseButton;
         }
 
         public void RemoveCallbacks(IOptionsActions instance)
@@ -705,5 +734,6 @@ public partial class @UserInput: IInputActionCollection2, IDisposable
     {
         void OnShift(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);
+        void OnLeftMouseButton(InputAction.CallbackContext context);
     }
 }

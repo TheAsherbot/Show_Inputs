@@ -18,6 +18,7 @@ namespace TheAshBot.UI
 
         [SerializeField] private GameObject window;
         [SerializeField] private InputManager inputManager;
+        [SerializeField] private SpriteRenderer backGround;
 
 
         [Header("Buttons")]
